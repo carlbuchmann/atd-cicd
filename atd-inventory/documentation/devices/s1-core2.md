@@ -440,6 +440,7 @@ router isis CORE
 | Neighbor | Remote AS | VRF | Shutdown | Send-community | Maximum-routes | Allowas-in | BFD | RIB Pre-Policy Retain | Route-Reflector Client | Passive |
 | -------- | --------- | --- | -------- | -------------- | -------------- | ---------- | --- | --------------------- | ---------------------- | ------- |
 | 10.200.10.1 | Inherited from peer group MPLS-OVERLAY-PEERS | default | - | Inherited from peer group MPLS-OVERLAY-PEERS | Inherited from peer group MPLS-OVERLAY-PEERS | - | Inherited from peer group MPLS-OVERLAY-PEERS | - | - | - |
+| 10.200.10.3 | Inherited from peer group MPLS-OVERLAY-PEERS | default | - | Inherited from peer group MPLS-OVERLAY-PEERS | Inherited from peer group MPLS-OVERLAY-PEERS | - | Inherited from peer group MPLS-OVERLAY-PEERS | - | - | - |
 | 10.200.10.4 | Inherited from peer group MPLS-OVERLAY-PEERS | default | - | Inherited from peer group MPLS-OVERLAY-PEERS | Inherited from peer group MPLS-OVERLAY-PEERS | - | Inherited from peer group MPLS-OVERLAY-PEERS | - | - | - |
 
 #### Router BGP EVPN Address Family
@@ -482,6 +483,8 @@ router bgp 64555
    neighbor MPLS-OVERLAY-PEERS maximum-routes 0
    neighbor 10.200.10.1 peer group MPLS-OVERLAY-PEERS
    neighbor 10.200.10.1 description s1-core1
+   neighbor 10.200.10.3 peer group MPLS-OVERLAY-PEERS
+   neighbor 10.200.10.3 description s2-core1
    neighbor 10.200.10.4 peer group MPLS-OVERLAY-PEERS
    neighbor 10.200.10.4 description s2-core2
    !

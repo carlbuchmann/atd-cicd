@@ -34,6 +34,9 @@ router_bgp:
   - ip_address: 10.200.10.1
     peer_group: MPLS-OVERLAY-PEERS
     description: s1-core1
+  - ip_address: 10.200.10.3
+    peer_group: MPLS-OVERLAY-PEERS
+    description: s2-core1
   - ip_address: 10.200.10.4
     peer_group: MPLS-OVERLAY-PEERS
     description: s2-core2

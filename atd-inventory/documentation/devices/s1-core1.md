@@ -415,10 +415,6 @@ router isis CORE
 | ------ | --------- |
 | 64555|  10.200.10.1 |
 
-| BGP AS | Cluster ID |
-| ------ | --------- |
-| 64555|  10.200.10.1 |
-
 | BGP Tuning |
 | ---------- |
 | graceful-restart restart-time 300 |
@@ -434,18 +430,6 @@ router isis CORE
 | -------- | ----- |
 | Address Family | mpls |
 | Remote AS | 64555 |
-| Route Reflector Client | Yes |
-| Source | Loopback0 |
-| BFD | True |
-| Send community | all |
-| Maximum routes | 0 (no limit) |
-
-##### RR-OVERLAY-PEERS
-
-| Settings | Value |
-| -------- | ----- |
-| Address Family | mpls |
-| Remote AS | 64555 |
 | Source | Loopback0 |
 | BFD | True |
 | Send community | all |
@@ -455,8 +439,9 @@ router isis CORE
 
 | Neighbor | Remote AS | VRF | Shutdown | Send-community | Maximum-routes | Allowas-in | BFD | RIB Pre-Policy Retain | Route-Reflector Client | Passive |
 | -------- | --------- | --- | -------- | -------------- | -------------- | ---------- | --- | --------------------- | ---------------------- | ------- |
-| 10.200.10.2 | Inherited from peer group MPLS-OVERLAY-PEERS | default | - | Inherited from peer group MPLS-OVERLAY-PEERS | Inherited from peer group MPLS-OVERLAY-PEERS | - | Inherited from peer group MPLS-OVERLAY-PEERS | - | Inherited from peer group MPLS-OVERLAY-PEERS | - |
-| 10.200.10.3 | Inherited from peer group MPLS-OVERLAY-PEERS | default | - | Inherited from peer group MPLS-OVERLAY-PEERS | Inherited from peer group MPLS-OVERLAY-PEERS | - | Inherited from peer group MPLS-OVERLAY-PEERS | - | Inherited from peer group MPLS-OVERLAY-PEERS | - |
+| 10.200.10.2 | Inherited from peer group MPLS-OVERLAY-PEERS | default | - | Inherited from peer group MPLS-OVERLAY-PEERS | Inherited from peer group MPLS-OVERLAY-PEERS | - | Inherited from peer group MPLS-OVERLAY-PEERS | - | - | - |
+| 10.200.10.3 | Inherited from peer group MPLS-OVERLAY-PEERS | default | - | Inherited from peer group MPLS-OVERLAY-PEERS | Inherited from peer group MPLS-OVERLAY-PEERS | - | Inherited from peer group MPLS-OVERLAY-PEERS | - | - | - |
+| 10.200.10.4 | Inherited from peer group MPLS-OVERLAY-PEERS | default | - | Inherited from peer group MPLS-OVERLAY-PEERS | Inherited from peer group MPLS-OVERLAY-PEERS | - | Inherited from peer group MPLS-OVERLAY-PEERS | - | - | - |
 
 #### Router BGP EVPN Address Family
 
@@ -465,7 +450,6 @@ router isis CORE
 | Peer Group | Activate | Encapsulation |
 | ---------- | -------- | ------------- |
 | MPLS-OVERLAY-PEERS | True | default |
-| RR-OVERLAY-PEERS | True | default |
 
 ##### EVPN Neighbor Default Encapsulation
 
@@ -490,26 +474,19 @@ router bgp 64555
    graceful-restart
    maximum-paths 4 ecmp 4
    no bgp default ipv4-unicast
-   bgp cluster-id 10.200.10.1
    neighbor MPLS-OVERLAY-PEERS peer group
    neighbor MPLS-OVERLAY-PEERS remote-as 64555
    neighbor MPLS-OVERLAY-PEERS update-source Loopback0
-   neighbor MPLS-OVERLAY-PEERS route-reflector-client
    neighbor MPLS-OVERLAY-PEERS bfd
    neighbor MPLS-OVERLAY-PEERS password 7 <removed>
    neighbor MPLS-OVERLAY-PEERS send-community
    neighbor MPLS-OVERLAY-PEERS maximum-routes 0
-   neighbor RR-OVERLAY-PEERS peer group
-   neighbor RR-OVERLAY-PEERS remote-as 64555
-   neighbor RR-OVERLAY-PEERS update-source Loopback0
-   neighbor RR-OVERLAY-PEERS bfd
-   neighbor RR-OVERLAY-PEERS password 7 <removed>
-   neighbor RR-OVERLAY-PEERS send-community
-   neighbor RR-OVERLAY-PEERS maximum-routes 0
    neighbor 10.200.10.2 peer group MPLS-OVERLAY-PEERS
    neighbor 10.200.10.2 description s1-core2
    neighbor 10.200.10.3 peer group MPLS-OVERLAY-PEERS
    neighbor 10.200.10.3 description s2-core1
+   neighbor 10.200.10.4 peer group MPLS-OVERLAY-PEERS
+   neighbor 10.200.10.4 description s2-core2
    !
    vpws VPN_SERVICE
       rd 10.200.10.1:10000
@@ -524,11 +501,9 @@ router bgp 64555
    address-family evpn
       neighbor default encapsulation mpls next-hop-self source-interface Loopback0
       neighbor MPLS-OVERLAY-PEERS activate
-      neighbor RR-OVERLAY-PEERS activate
    !
    address-family ipv4
       no neighbor MPLS-OVERLAY-PEERS activate
-      no neighbor RR-OVERLAY-PEERS activate
 ```
 
 ## BFD

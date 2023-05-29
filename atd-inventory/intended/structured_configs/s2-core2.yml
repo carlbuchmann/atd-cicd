@@ -10,18 +10,8 @@ router_bgp:
   graceful_restart:
     enabled: true
     restart_time: 300
-  bgp_cluster_id: 10.200.10.4
   peer_groups:
   - name: MPLS-OVERLAY-PEERS
-    type: mpls
-    update_source: Loopback0
-    bfd: true
-    password: $1c$G8BQN0ezkiJOX2cuAYpsEA==
-    send_community: all
-    maximum_routes: 0
-    remote_as: '64555'
-    route_reflector_client: true
-  - name: RR-OVERLAY-PEERS
     type: mpls
     update_source: Loopback0
     bfd: true
@@ -33,8 +23,6 @@ router_bgp:
     peer_groups:
     - name: MPLS-OVERLAY-PEERS
       activate: false
-    - name: RR-OVERLAY-PEERS
-      activate: false
   address_family_evpn:
     neighbor_default:
       encapsulation: mpls
@@ -42,9 +30,10 @@ router_bgp:
     peer_groups:
     - name: MPLS-OVERLAY-PEERS
       activate: true
-    - name: RR-OVERLAY-PEERS
-      activate: true
   neighbors:
+  - ip_address: 10.200.10.1
+    peer_group: MPLS-OVERLAY-PEERS
+    description: s1-core1
   - ip_address: 10.200.10.2
     peer_group: MPLS-OVERLAY-PEERS
     description: s1-core2

@@ -26,7 +26,7 @@ underlay_routing_protocol: isis-ldp
 overlay_routing_protocol: ibgp
 
 bgp_as: 64555
-# bgp_mesh_pes: true
+bgp_mesh_pes: true
 
 bgp_peer_groups:
   # all passwords set to "arista"
@@ -66,22 +66,16 @@ pe:
     s1-core1:
       id: 1
       mgmt_ip: 192.168.0.102/24
-      mpls_overlay_role: server
     s1-core2:
       id: 2
       mgmt_ip: 192.168.0.103/24
-      mpls_overlay_role: client
-      mpls_route_reflectors: [ s1-core1, s2-core2]
     s2-core1:
       id: 3
       mgmt_ip: 192.168.0.202/24
-      mpls_overlay_role: client
-      mpls_route_reflectors: [ s1-core1, s2-core2]
     s2-core2:
       id: 4
       bgp_as: 65505
       mgmt_ip: 192.168.0.203/24
-      mpls_overlay_role: server
 
 
 
