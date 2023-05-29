@@ -346,10 +346,9 @@ router ospf 100
 
 | BGP Tuning |
 | ---------- |
-| no bgp default ipv4-unicast |
-| distance bgp 20 200 200 |
 | graceful-restart restart-time 300 |
 | graceful-restart |
+| no bgp default ipv4-unicast |
 | maximum-paths 4 ecmp 4 |
 
 #### Router BGP Peer Groups
@@ -391,17 +390,16 @@ router ospf 100
 !
 router bgp 65001
    router-id 192.0.255.1
-   no bgp default ipv4-unicast
-   distance bgp 20 200 200
    graceful-restart restart-time 300
    graceful-restart
    maximum-paths 4 ecmp 4
+   no bgp default ipv4-unicast
    neighbor EVPN-OVERLAY-PEERS peer group
    neighbor EVPN-OVERLAY-PEERS next-hop-unchanged
    neighbor EVPN-OVERLAY-PEERS update-source Loopback0
    neighbor EVPN-OVERLAY-PEERS bfd
    neighbor EVPN-OVERLAY-PEERS ebgp-multihop 8
-   neighbor EVPN-OVERLAY-PEERS password 7 q+VNViP5i4rVjW1cxFv2wA==
+   neighbor EVPN-OVERLAY-PEERS password 7 <removed>
    neighbor EVPN-OVERLAY-PEERS send-community
    neighbor EVPN-OVERLAY-PEERS maximum-routes 0
    neighbor 192.0.255.3 peer group EVPN-OVERLAY-PEERS

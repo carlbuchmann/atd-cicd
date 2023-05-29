@@ -1,12 +1,15 @@
 router_bgp:
-  as: '65555'
+  as: '64555'
   router_id: 10.200.10.4
-  bgp_defaults:
-  - no bgp default ipv4-unicast
-  - distance bgp 20 200 200
-  - graceful-restart restart-time 300
-  - graceful-restart
-  - maximum-paths 4 ecmp 4
+  bgp:
+    default:
+      ipv4_unicast: false
+  maximum_paths:
+    paths: 4
+    ecmp: 4
+  graceful_restart:
+    enabled: true
+    restart_time: 300
   bgp_cluster_id: 10.200.10.4
   peer_groups:
   - name: MPLS-OVERLAY-PEERS
@@ -16,7 +19,7 @@ router_bgp:
     password: $1c$G8BQN0ezkiJOX2cuAYpsEA==
     send_community: all
     maximum_routes: 0
-    remote_as: '65555'
+    remote_as: '64555'
     route_reflector_client: true
   - name: RR-OVERLAY-PEERS
     type: mpls
@@ -25,7 +28,7 @@ router_bgp:
     password: $1c$G8BQN0ezkiJOX2cuAYpsEA==
     send_community: all
     maximum_routes: 0
-    remote_as: '65555'
+    remote_as: '64555'
   address_family_ipv4:
     peer_groups:
     - name: MPLS-OVERLAY-PEERS
@@ -120,6 +123,11 @@ mpls:
     router_id: 10.200.10.4
     shutdown: false
     transport_address_interface: Loopback0
+router_bfd:
+  multihop:
+    interval: 1200
+    min_rx: 1200
+    multiplier: 3
 ethernet_interfaces:
 - name: Ethernet4
   peer: s1-core2
@@ -198,11 +206,6 @@ ethernet_interfaces:
   lldp:
     transmit: false
     receive: false
-router_bfd:
-  multihop:
-    interval: 1200
-    min_rx: 1200
-    multiplier: 3
 patch_panel:
   patches:
   - name: CIRCUIT_3

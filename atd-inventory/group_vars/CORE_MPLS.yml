@@ -25,7 +25,7 @@ dns_domain: atd.lab
 underlay_routing_protocol: isis-ldp
 overlay_routing_protocol: ibgp
 
-bgp_as: 65555
+bgp_as: 64555
 # bgp_mesh_pes: true
 
 bgp_peer_groups:
@@ -54,18 +54,13 @@ bfd_multihop:
 
 pe:
   defaults:
-    platform: CEOS-LAB
+    platform: cEOSLab
     loopback_ipv4_pool: 10.200.10.0/24
     vtep_loopback_ipv4_pool: 10.200.20.0/24
     uplink_ipv4_pool: 10.255.0.0/24
     virtual_router_mac_address: 00:1c:73:00:cc:00
     isis_system_id_prefix: '0000.0001'
     overlay_address_families: [ evpn ]
-    bgp_defaults:
-      - 'no bgp default ipv4-unicast'
-      - 'distance bgp 20 200 200'
-      - 'graceful-restart restart-time 300'
-      - 'graceful-restart'
     spanning_tree_mode: none
   nodes:
     s1-core1:

@@ -215,7 +215,7 @@ interface Ethernet1
    isis hello padding
    isis network point-to-point
    isis authentication mode md5
-   isis authentication key 7 $1c$sTNAlR6rKSw=
+   isis authentication key 7 <removed>
 !
 interface Ethernet2
    no shutdown
@@ -244,7 +244,7 @@ interface Ethernet4
    isis hello padding
    isis network point-to-point
    isis authentication mode md5
-   isis authentication key 7 $1c$sTNAlR6rKSw=
+   isis authentication key 7 <removed>
 !
 interface Ethernet6
    description P2P_LINK_TO_s2-core1_Ethernet6
@@ -261,7 +261,7 @@ interface Ethernet6
    isis hello padding
    isis network point-to-point
    isis authentication mode md5
-   isis authentication key 7 $1c$sTNAlR6rKSw=
+   isis authentication key 7 <removed>
 ```
 
 ### Loopback Interfaces
@@ -413,18 +413,17 @@ router isis CORE
 
 | BGP AS | Router ID |
 | ------ | --------- |
-| 65555|  10.200.10.4 |
+| 64555|  10.200.10.4 |
 
 | BGP AS | Cluster ID |
 | ------ | --------- |
-| 65555|  10.200.10.4 |
+| 64555|  10.200.10.4 |
 
 | BGP Tuning |
 | ---------- |
-| no bgp default ipv4-unicast |
-| distance bgp 20 200 200 |
 | graceful-restart restart-time 300 |
 | graceful-restart |
+| no bgp default ipv4-unicast |
 | maximum-paths 4 ecmp 4 |
 
 #### Router BGP Peer Groups
@@ -434,7 +433,7 @@ router isis CORE
 | Settings | Value |
 | -------- | ----- |
 | Address Family | mpls |
-| Remote AS | 65555 |
+| Remote AS | 64555 |
 | Route Reflector Client | Yes |
 | Source | Loopback0 |
 | BFD | True |
@@ -446,7 +445,7 @@ router isis CORE
 | Settings | Value |
 | -------- | ----- |
 | Address Family | mpls |
-| Remote AS | 65555 |
+| Remote AS | 64555 |
 | Source | Loopback0 |
 | BFD | True |
 | Send community | all |
@@ -485,27 +484,26 @@ router isis CORE
 
 ```eos
 !
-router bgp 65555
+router bgp 64555
    router-id 10.200.10.4
-   bgp cluster-id 10.200.10.4
-   no bgp default ipv4-unicast
-   distance bgp 20 200 200
    graceful-restart restart-time 300
    graceful-restart
    maximum-paths 4 ecmp 4
+   no bgp default ipv4-unicast
+   bgp cluster-id 10.200.10.4
    neighbor MPLS-OVERLAY-PEERS peer group
-   neighbor MPLS-OVERLAY-PEERS remote-as 65555
+   neighbor MPLS-OVERLAY-PEERS remote-as 64555
    neighbor MPLS-OVERLAY-PEERS update-source Loopback0
    neighbor MPLS-OVERLAY-PEERS route-reflector-client
    neighbor MPLS-OVERLAY-PEERS bfd
-   neighbor MPLS-OVERLAY-PEERS password 7 $1c$G8BQN0ezkiJOX2cuAYpsEA==
+   neighbor MPLS-OVERLAY-PEERS password 7 <removed>
    neighbor MPLS-OVERLAY-PEERS send-community
    neighbor MPLS-OVERLAY-PEERS maximum-routes 0
    neighbor RR-OVERLAY-PEERS peer group
-   neighbor RR-OVERLAY-PEERS remote-as 65555
+   neighbor RR-OVERLAY-PEERS remote-as 64555
    neighbor RR-OVERLAY-PEERS update-source Loopback0
    neighbor RR-OVERLAY-PEERS bfd
-   neighbor RR-OVERLAY-PEERS password 7 $1c$G8BQN0ezkiJOX2cuAYpsEA==
+   neighbor RR-OVERLAY-PEERS password 7 <removed>
    neighbor RR-OVERLAY-PEERS send-community
    neighbor RR-OVERLAY-PEERS maximum-routes 0
    neighbor 10.200.10.2 peer group MPLS-OVERLAY-PEERS

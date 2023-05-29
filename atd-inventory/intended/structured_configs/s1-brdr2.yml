@@ -1,12 +1,15 @@
 router_bgp:
   as: '65103'
   router_id: 192.0.255.8
-  bgp_defaults:
-  - no bgp default ipv4-unicast
-  - distance bgp 20 200 200
-  - graceful-restart restart-time 300
-  - graceful-restart
-  - maximum-paths 4 ecmp 4
+  bgp:
+    default:
+      ipv4_unicast: false
+  maximum_paths:
+    paths: 4
+    ecmp: 4
+  graceful_restart:
+    enabled: true
+    restart_time: 300
   peer_groups:
   - name: EVPN-OVERLAY-PEERS
     type: evpn
@@ -129,16 +132,16 @@ management_api_http:
   - name: default
   enable_https: true
 vlans:
-- tenant: system
+- id: 4093
+  tenant: system
   name: LEAF_PEER_L3
   trunk_groups:
   - LEAF_PEER_L3
-  id: 4093
-- tenant: system
+- id: 4094
+  tenant: system
   name: MLAG_PEER
   trunk_groups:
   - MLAG
-  id: 4094
 - id: 100
   name: VLAN100
   tenant: Tenant_A
@@ -207,32 +210,31 @@ port_channel_interfaces:
   description: MLAG_PEER_s1-brdr1_Po1
   type: switched
   shutdown: false
-  vlans: 2-4094
   mode: trunk
   trunk_groups:
   - LEAF_PEER_L3
   - MLAG
 ethernet_interfaces:
-- peer: s1-brdr1
+- name: Ethernet1
+  peer: s1-brdr1
   peer_interface: Ethernet1
   peer_type: mlag_peer
   description: MLAG_PEER_s1-brdr1_Ethernet1
-  type: switched
+  type: port-channel-member
   shutdown: false
   channel_group:
     id: 1
     mode: active
-  name: Ethernet1
-- peer: s1-brdr1
+- name: Ethernet6
+  peer: s1-brdr1
   peer_interface: Ethernet6
   peer_type: mlag_peer
   description: MLAG_PEER_s1-brdr1_Ethernet6
-  type: switched
+  type: port-channel-member
   shutdown: false
   channel_group:
     id: 1
     mode: active
-  name: Ethernet6
 - name: Ethernet2
   peer: s1-spine1
   peer_interface: Ethernet8

@@ -1,14 +1,9 @@
 # Spine Switches
 spine:
   defaults:
-    platform: CEOS-LAB
+    platform: cEOSLab
     bgp_as: 65001
     loopback_ipv4_pool: 192.0.255.0/24
-    bgp_defaults:
-      - 'no bgp default ipv4-unicast'
-      - 'distance bgp 20 200 200'
-      - 'graceful-restart restart-time 300'
-      - 'graceful-restart'
     mlag: false
   nodes:
     s1-spine1:
@@ -24,7 +19,7 @@ spine:
 
 l3leaf:
   defaults:
-    platform: CEOS-LAB
+    platform: cEOSLab
     loopback_ipv4_pool: 192.0.255.0/24
     loopback_ipv4_offset: 2
     vtep_loopback_ipv4_pool: 192.0.254.0/24
@@ -36,11 +31,6 @@ l3leaf:
     mlag_peer_l3_ipv4_pool: 10.255.251.0/24
     virtual_router_mac_address: 00:1c:73:00:dc:01
     evpn_route_servers: [s1-spine1, s1-spine2, s2-spine1, s2-spine2]
-    bgp_defaults:
-      - 'no bgp default ipv4-unicast'
-      - 'distance bgp 20 200 200'
-      - 'graceful-restart restart-time 300'
-      - 'graceful-restart'
     spanning_tree_mode: mstp
     spanning_tree_priority: 16384
     # filter:
