@@ -13,7 +13,7 @@ jobs:
     # runs-on: self-hosted
     steps:
       - name: Install Ansible
-        run: pip install ansible
+        run: pip install "ansible-core<2.15" --upgrade
 
       - name: Install Arista AVD
         run: ansible-galaxy collection install arista.avd:==4.1.0
