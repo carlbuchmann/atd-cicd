@@ -12,7 +12,7 @@ help: ## Display help message (*: main entry points / []: part of an entry point
 
 .PHONY: prepare
 prepare: ## Build container topology in CVP to simulate a ZTP environment
-	ansible-playbook playbooks/atd-prepare-lab.yml
+	ansible-playbook playbooks/atd-prepare-lab.yml -i dc-fabrics/inventory.yml
 
 .PHONY: fabric-build
 fabric-build: ## Build DC fabric artifacts

@@ -24,14 +24,14 @@ CVP_DEVICES_INIT:
     parentContainerName: STAGING
     configlets:
       - BASE_s1-brdr2
-  # - fqdn: s1-core1
-  #   parentContainerName: STAGING
-  #   configlets:
-  #     - BASE_s1-core1
-  # - fqdn: s1-core2
-  #   parentContainerName: STAGING
-  #   configlets:
-  #     - BASE_s1-core2
+  - fqdn: s1-core1
+    parentContainerName: STAGING
+    configlets:
+      - BASE_s1-core1
+  - fqdn: s1-core2
+    parentContainerName: STAGING
+    configlets:
+      - BASE_s1-core2
   - fqdn: s1-spine1
     parentContainerName: STAGING
     configlets:
@@ -72,14 +72,14 @@ CVP_DEVICES_INIT:
     parentContainerName: STAGING
     configlets:
       - BASE_s2-brdr2
-  # - fqdn: s2-core1
-  #   parentContainerName: STAGING
-  #   configlets:
-  #     - BASE_s2-core1
-  # - fqdn: s2-core2
-  #   parentContainerName: STAGING
-  #   configlets:
-  #     - BASE_s2-core2
+  - fqdn: s2-core1
+    parentContainerName: STAGING
+    configlets:
+      - BASE_s2-core1
+  - fqdn: s2-core2
+    parentContainerName: STAGING
+    configlets:
+      - BASE_s2-core2
   - fqdn: s2-spine1
     parentContainerName: STAGING
     configlets:

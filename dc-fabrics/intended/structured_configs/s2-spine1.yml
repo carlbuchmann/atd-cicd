@@ -1,3 +1,4 @@
+hostname: s2-spine1
 router_bgp:
   as: '65002'
   router_id: 192.2.255.1

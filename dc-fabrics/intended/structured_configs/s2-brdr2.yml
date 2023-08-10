@@ -1,3 +1,4 @@
+hostname: s2-brdr2
 router_bgp:
   as: '65203'
   router_id: 192.2.255.8
