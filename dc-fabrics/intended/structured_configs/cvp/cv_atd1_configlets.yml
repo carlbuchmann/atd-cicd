@@ -80,12 +80,15 @@ cvp_configlets:
     EVPN-OVERLAY-PEERS\n   neighbor 192.2.255.1 remote-as 65002\n   neighbor 192.2.255.1
     description s2-spine1\n   neighbor 192.2.255.2 peer group EVPN-OVERLAY-PEERS\n
     \  neighbor 192.2.255.2 remote-as 65002\n   neighbor 192.2.255.2 description s2-spine2\n
-    \  redistribute connected route-map RM-CONN-2-BGP\n   !\n   vlan-aware-bundle
-    Extend\n      rd 192.0.255.7:10110\n      route-target both 10110:10110\n      redistribute
-    learned\n      vlan 110\n   !\n   vlan-aware-bundle Tenant_A_OP_Zone\n      rd
-    192.0.255.7:10\n      route-target both 10:10\n      redistribute learned\n      vlan
-    100,200,210,300\n   !\n   address-family evpn\n      neighbor EVPN-OVERLAY-PEERS
-    activate\n   !\n   address-family ipv4\n      no neighbor EVPN-OVERLAY-PEERS activate\n
+    \  redistribute connected route-map RM-CONN-2-BGP\n   !\n   vlan 100\n      rd
+    192.0.255.7:10100\n      route-target both 10100:10100\n      redistribute learned\n
+    \  !\n   vlan 110\n      rd 192.0.255.7:10110\n      route-target both 10110:10110\n
+    \     redistribute learned\n   !\n   vlan 200\n      rd 192.0.255.7:10200\n      route-target
+    both 10200:10200\n      redistribute learned\n   !\n   vlan 210\n      rd 192.0.255.7:10210\n
+    \     route-target both 10210:10210\n      redistribute learned\n   !\n   vlan
+    300\n      rd 192.0.255.7:10300\n      route-target both 10300:10300\n      redistribute
+    learned\n   !\n   address-family evpn\n      neighbor EVPN-OVERLAY-PEERS activate\n
+    \  !\n   address-family ipv4\n      no neighbor EVPN-OVERLAY-PEERS activate\n
     \     neighbor IPv4-UNDERLAY-PEERS activate\n      neighbor MLAG-IPv4-UNDERLAY-PEER
     activate\n   !\n   vrf Tenant_A_OP_Zone\n      rd 192.0.255.7:10\n      route-target
     import evpn 10:10\n      route-target export evpn 10:10\n      router-id 192.0.255.7\n
@@ -173,12 +176,15 @@ cvp_configlets:
     EVPN-OVERLAY-PEERS\n   neighbor 192.2.255.1 remote-as 65002\n   neighbor 192.2.255.1
     description s2-spine1\n   neighbor 192.2.255.2 peer group EVPN-OVERLAY-PEERS\n
     \  neighbor 192.2.255.2 remote-as 65002\n   neighbor 192.2.255.2 description s2-spine2\n
-    \  redistribute connected route-map RM-CONN-2-BGP\n   !\n   vlan-aware-bundle
-    Extend\n      rd 192.0.255.8:10110\n      route-target both 10110:10110\n      redistribute
-    learned\n      vlan 110\n   !\n   vlan-aware-bundle Tenant_A_OP_Zone\n      rd
-    192.0.255.8:10\n      route-target both 10:10\n      redistribute learned\n      vlan
-    100,200,210,300\n   !\n   address-family evpn\n      neighbor EVPN-OVERLAY-PEERS
-    activate\n   !\n   address-family ipv4\n      no neighbor EVPN-OVERLAY-PEERS activate\n
+    \  redistribute connected route-map RM-CONN-2-BGP\n   !\n   vlan 100\n      rd
+    192.0.255.8:10100\n      route-target both 10100:10100\n      redistribute learned\n
+    \  !\n   vlan 110\n      rd 192.0.255.8:10110\n      route-target both 10110:10110\n
+    \     redistribute learned\n   !\n   vlan 200\n      rd 192.0.255.8:10200\n      route-target
+    both 10200:10200\n      redistribute learned\n   !\n   vlan 210\n      rd 192.0.255.8:10210\n
+    \     route-target both 10210:10210\n      redistribute learned\n   !\n   vlan
+    300\n      rd 192.0.255.8:10300\n      route-target both 10300:10300\n      redistribute
+    learned\n   !\n   address-family evpn\n      neighbor EVPN-OVERLAY-PEERS activate\n
+    \  !\n   address-family ipv4\n      no neighbor EVPN-OVERLAY-PEERS activate\n
     \     neighbor IPv4-UNDERLAY-PEERS activate\n      neighbor MLAG-IPv4-UNDERLAY-PEER
     activate\n   !\n   vrf Tenant_A_OP_Zone\n      rd 192.0.255.8:10\n      route-target
     import evpn 10:10\n      route-target export evpn 10:10\n      router-id 192.0.255.8\n
@@ -369,10 +375,13 @@ cvp_configlets:
     remote-as 65002\n   neighbor 192.2.255.1 description s2-spine1\n   neighbor 192.2.255.2
     peer group EVPN-OVERLAY-PEERS\n   neighbor 192.2.255.2 remote-as 65002\n   neighbor
     192.2.255.2 description s2-spine2\n   redistribute connected route-map RM-CONN-2-BGP\n
-    \  !\n   vlan-aware-bundle Extend\n      rd 192.0.255.3:10110\n      route-target
-    both 10110:10110\n      redistribute learned\n      vlan 110\n   !\n   vlan-aware-bundle
-    Tenant_A_OP_Zone\n      rd 192.0.255.3:10\n      route-target both 10:10\n      redistribute
-    learned\n      vlan 100,200,210,300\n   !\n   address-family evpn\n      neighbor
+    \  !\n   vlan 100\n      rd 192.0.255.3:10100\n      route-target both 10100:10100\n
+    \     redistribute learned\n   !\n   vlan 110\n      rd 192.0.255.3:10110\n      route-target
+    both 10110:10110\n      redistribute learned\n   !\n   vlan 200\n      rd 192.0.255.3:10200\n
+    \     route-target both 10200:10200\n      redistribute learned\n   !\n   vlan
+    210\n      rd 192.0.255.3:10210\n      route-target both 10210:10210\n      redistribute
+    learned\n   !\n   vlan 300\n      rd 192.0.255.3:10300\n      route-target both
+    10300:10300\n      redistribute learned\n   !\n   address-family evpn\n      neighbor
     EVPN-OVERLAY-PEERS activate\n   !\n   address-family ipv4\n      no neighbor EVPN-OVERLAY-PEERS
     activate\n      neighbor IPv4-UNDERLAY-PEERS activate\n      neighbor MLAG-IPv4-UNDERLAY-PEER
     activate\n   !\n   vrf Tenant_A_OP_Zone\n      rd 192.0.255.3:10\n      route-target
@@ -458,10 +467,13 @@ cvp_configlets:
     remote-as 65002\n   neighbor 192.2.255.1 description s2-spine1\n   neighbor 192.2.255.2
     peer group EVPN-OVERLAY-PEERS\n   neighbor 192.2.255.2 remote-as 65002\n   neighbor
     192.2.255.2 description s2-spine2\n   redistribute connected route-map RM-CONN-2-BGP\n
-    \  !\n   vlan-aware-bundle Extend\n      rd 192.0.255.4:10110\n      route-target
-    both 10110:10110\n      redistribute learned\n      vlan 110\n   !\n   vlan-aware-bundle
-    Tenant_A_OP_Zone\n      rd 192.0.255.4:10\n      route-target both 10:10\n      redistribute
-    learned\n      vlan 100,200,210,300\n   !\n   address-family evpn\n      neighbor
+    \  !\n   vlan 100\n      rd 192.0.255.4:10100\n      route-target both 10100:10100\n
+    \     redistribute learned\n   !\n   vlan 110\n      rd 192.0.255.4:10110\n      route-target
+    both 10110:10110\n      redistribute learned\n   !\n   vlan 200\n      rd 192.0.255.4:10200\n
+    \     route-target both 10200:10200\n      redistribute learned\n   !\n   vlan
+    210\n      rd 192.0.255.4:10210\n      route-target both 10210:10210\n      redistribute
+    learned\n   !\n   vlan 300\n      rd 192.0.255.4:10300\n      route-target both
+    10300:10300\n      redistribute learned\n   !\n   address-family evpn\n      neighbor
     EVPN-OVERLAY-PEERS activate\n   !\n   address-family ipv4\n      no neighbor EVPN-OVERLAY-PEERS
     activate\n      neighbor IPv4-UNDERLAY-PEERS activate\n      neighbor MLAG-IPv4-UNDERLAY-PEER
     activate\n   !\n   vrf Tenant_A_OP_Zone\n      rd 192.0.255.4:10\n      route-target
@@ -547,10 +559,13 @@ cvp_configlets:
     remote-as 65002\n   neighbor 192.2.255.1 description s2-spine1\n   neighbor 192.2.255.2
     peer group EVPN-OVERLAY-PEERS\n   neighbor 192.2.255.2 remote-as 65002\n   neighbor
     192.2.255.2 description s2-spine2\n   redistribute connected route-map RM-CONN-2-BGP\n
-    \  !\n   vlan-aware-bundle Extend\n      rd 192.0.255.5:10110\n      route-target
-    both 10110:10110\n      redistribute learned\n      vlan 110\n   !\n   vlan-aware-bundle
-    Tenant_A_OP_Zone\n      rd 192.0.255.5:10\n      route-target both 10:10\n      redistribute
-    learned\n      vlan 100,200,210,300\n   !\n   address-family evpn\n      neighbor
+    \  !\n   vlan 100\n      rd 192.0.255.5:10100\n      route-target both 10100:10100\n
+    \     redistribute learned\n   !\n   vlan 110\n      rd 192.0.255.5:10110\n      route-target
+    both 10110:10110\n      redistribute learned\n   !\n   vlan 200\n      rd 192.0.255.5:10200\n
+    \     route-target both 10200:10200\n      redistribute learned\n   !\n   vlan
+    210\n      rd 192.0.255.5:10210\n      route-target both 10210:10210\n      redistribute
+    learned\n   !\n   vlan 300\n      rd 192.0.255.5:10300\n      route-target both
+    10300:10300\n      redistribute learned\n   !\n   address-family evpn\n      neighbor
     EVPN-OVERLAY-PEERS activate\n   !\n   address-family ipv4\n      no neighbor EVPN-OVERLAY-PEERS
     activate\n      neighbor IPv4-UNDERLAY-PEERS activate\n      neighbor MLAG-IPv4-UNDERLAY-PEER
     activate\n   !\n   vrf Tenant_A_OP_Zone\n      rd 192.0.255.5:10\n      route-target
@@ -636,10 +651,13 @@ cvp_configlets:
     remote-as 65002\n   neighbor 192.2.255.1 description s2-spine1\n   neighbor 192.2.255.2
     peer group EVPN-OVERLAY-PEERS\n   neighbor 192.2.255.2 remote-as 65002\n   neighbor
     192.2.255.2 description s2-spine2\n   redistribute connected route-map RM-CONN-2-BGP\n
-    \  !\n   vlan-aware-bundle Extend\n      rd 192.0.255.6:10110\n      route-target
-    both 10110:10110\n      redistribute learned\n      vlan 110\n   !\n   vlan-aware-bundle
-    Tenant_A_OP_Zone\n      rd 192.0.255.6:10\n      route-target both 10:10\n      redistribute
-    learned\n      vlan 100,200,210,300\n   !\n   address-family evpn\n      neighbor
+    \  !\n   vlan 100\n      rd 192.0.255.6:10100\n      route-target both 10100:10100\n
+    \     redistribute learned\n   !\n   vlan 110\n      rd 192.0.255.6:10110\n      route-target
+    both 10110:10110\n      redistribute learned\n   !\n   vlan 200\n      rd 192.0.255.6:10200\n
+    \     route-target both 10200:10200\n      redistribute learned\n   !\n   vlan
+    210\n      rd 192.0.255.6:10210\n      route-target both 10210:10210\n      redistribute
+    learned\n   !\n   vlan 300\n      rd 192.0.255.6:10300\n      route-target both
+    10300:10300\n      redistribute learned\n   !\n   address-family evpn\n      neighbor
     EVPN-OVERLAY-PEERS activate\n   !\n   address-family ipv4\n      no neighbor EVPN-OVERLAY-PEERS
     activate\n      neighbor IPv4-UNDERLAY-PEERS activate\n      neighbor MLAG-IPv4-UNDERLAY-PEER
     activate\n   !\n   vrf Tenant_A_OP_Zone\n      rd 192.0.255.6:10\n      route-target
@@ -860,12 +878,15 @@ cvp_configlets:
     EVPN-OVERLAY-PEERS\n   neighbor 192.2.255.1 remote-as 65002\n   neighbor 192.2.255.1
     description s2-spine1\n   neighbor 192.2.255.2 peer group EVPN-OVERLAY-PEERS\n
     \  neighbor 192.2.255.2 remote-as 65002\n   neighbor 192.2.255.2 description s2-spine2\n
-    \  redistribute connected route-map RM-CONN-2-BGP\n   !\n   vlan-aware-bundle
-    Extend\n      rd 192.2.255.7:10110\n      route-target both 10110:10110\n      redistribute
-    learned\n      vlan 110\n   !\n   vlan-aware-bundle Tenant_A_OP_Zone\n      rd
-    192.2.255.7:10\n      route-target both 10:10\n      redistribute learned\n      vlan
-    100,200,210,300\n   !\n   address-family evpn\n      neighbor EVPN-OVERLAY-PEERS
-    activate\n   !\n   address-family ipv4\n      no neighbor EVPN-OVERLAY-PEERS activate\n
+    \  redistribute connected route-map RM-CONN-2-BGP\n   !\n   vlan 100\n      rd
+    192.2.255.7:10100\n      route-target both 10100:10100\n      redistribute learned\n
+    \  !\n   vlan 110\n      rd 192.2.255.7:10110\n      route-target both 10110:10110\n
+    \     redistribute learned\n   !\n   vlan 200\n      rd 192.2.255.7:10200\n      route-target
+    both 10200:10200\n      redistribute learned\n   !\n   vlan 210\n      rd 192.2.255.7:10210\n
+    \     route-target both 10210:10210\n      redistribute learned\n   !\n   vlan
+    300\n      rd 192.2.255.7:10300\n      route-target both 10300:10300\n      redistribute
+    learned\n   !\n   address-family evpn\n      neighbor EVPN-OVERLAY-PEERS activate\n
+    \  !\n   address-family ipv4\n      no neighbor EVPN-OVERLAY-PEERS activate\n
     \     neighbor IPv4-UNDERLAY-PEERS activate\n      neighbor MLAG-IPv4-UNDERLAY-PEER
     activate\n   !\n   vrf Tenant_A_OP_Zone\n      rd 192.2.255.7:10\n      route-target
     import evpn 10:10\n      route-target export evpn 10:10\n      router-id 192.2.255.7\n
@@ -953,12 +974,15 @@ cvp_configlets:
     EVPN-OVERLAY-PEERS\n   neighbor 192.2.255.1 remote-as 65002\n   neighbor 192.2.255.1
     description s2-spine1\n   neighbor 192.2.255.2 peer group EVPN-OVERLAY-PEERS\n
     \  neighbor 192.2.255.2 remote-as 65002\n   neighbor 192.2.255.2 description s2-spine2\n
-    \  redistribute connected route-map RM-CONN-2-BGP\n   !\n   vlan-aware-bundle
-    Extend\n      rd 192.2.255.8:10110\n      route-target both 10110:10110\n      redistribute
-    learned\n      vlan 110\n   !\n   vlan-aware-bundle Tenant_A_OP_Zone\n      rd
-    192.2.255.8:10\n      route-target both 10:10\n      redistribute learned\n      vlan
-    100,200,210,300\n   !\n   address-family evpn\n      neighbor EVPN-OVERLAY-PEERS
-    activate\n   !\n   address-family ipv4\n      no neighbor EVPN-OVERLAY-PEERS activate\n
+    \  redistribute connected route-map RM-CONN-2-BGP\n   !\n   vlan 100\n      rd
+    192.2.255.8:10100\n      route-target both 10100:10100\n      redistribute learned\n
+    \  !\n   vlan 110\n      rd 192.2.255.8:10110\n      route-target both 10110:10110\n
+    \     redistribute learned\n   !\n   vlan 200\n      rd 192.2.255.8:10200\n      route-target
+    both 10200:10200\n      redistribute learned\n   !\n   vlan 210\n      rd 192.2.255.8:10210\n
+    \     route-target both 10210:10210\n      redistribute learned\n   !\n   vlan
+    300\n      rd 192.2.255.8:10300\n      route-target both 10300:10300\n      redistribute
+    learned\n   !\n   address-family evpn\n      neighbor EVPN-OVERLAY-PEERS activate\n
+    \  !\n   address-family ipv4\n      no neighbor EVPN-OVERLAY-PEERS activate\n
     \     neighbor IPv4-UNDERLAY-PEERS activate\n      neighbor MLAG-IPv4-UNDERLAY-PEER
     activate\n   !\n   vrf Tenant_A_OP_Zone\n      rd 192.2.255.8:10\n      route-target
     import evpn 10:10\n      route-target export evpn 10:10\n      router-id 192.2.255.8\n
@@ -1149,10 +1173,13 @@ cvp_configlets:
     remote-as 65002\n   neighbor 192.2.255.1 description s2-spine1\n   neighbor 192.2.255.2
     peer group EVPN-OVERLAY-PEERS\n   neighbor 192.2.255.2 remote-as 65002\n   neighbor
     192.2.255.2 description s2-spine2\n   redistribute connected route-map RM-CONN-2-BGP\n
-    \  !\n   vlan-aware-bundle Extend\n      rd 192.2.255.3:10110\n      route-target
-    both 10110:10110\n      redistribute learned\n      vlan 110\n   !\n   vlan-aware-bundle
-    Tenant_A_OP_Zone\n      rd 192.2.255.3:10\n      route-target both 10:10\n      redistribute
-    learned\n      vlan 100,200,210,300\n   !\n   address-family evpn\n      neighbor
+    \  !\n   vlan 100\n      rd 192.2.255.3:10100\n      route-target both 10100:10100\n
+    \     redistribute learned\n   !\n   vlan 110\n      rd 192.2.255.3:10110\n      route-target
+    both 10110:10110\n      redistribute learned\n   !\n   vlan 200\n      rd 192.2.255.3:10200\n
+    \     route-target both 10200:10200\n      redistribute learned\n   !\n   vlan
+    210\n      rd 192.2.255.3:10210\n      route-target both 10210:10210\n      redistribute
+    learned\n   !\n   vlan 300\n      rd 192.2.255.3:10300\n      route-target both
+    10300:10300\n      redistribute learned\n   !\n   address-family evpn\n      neighbor
     EVPN-OVERLAY-PEERS activate\n   !\n   address-family ipv4\n      no neighbor EVPN-OVERLAY-PEERS
     activate\n      neighbor IPv4-UNDERLAY-PEERS activate\n      neighbor MLAG-IPv4-UNDERLAY-PEER
     activate\n   !\n   vrf Tenant_A_OP_Zone\n      rd 192.2.255.3:10\n      route-target
@@ -1238,10 +1265,13 @@ cvp_configlets:
     remote-as 65002\n   neighbor 192.2.255.1 description s2-spine1\n   neighbor 192.2.255.2
     peer group EVPN-OVERLAY-PEERS\n   neighbor 192.2.255.2 remote-as 65002\n   neighbor
     192.2.255.2 description s2-spine2\n   redistribute connected route-map RM-CONN-2-BGP\n
-    \  !\n   vlan-aware-bundle Extend\n      rd 192.2.255.4:10110\n      route-target
-    both 10110:10110\n      redistribute learned\n      vlan 110\n   !\n   vlan-aware-bundle
-    Tenant_A_OP_Zone\n      rd 192.2.255.4:10\n      route-target both 10:10\n      redistribute
-    learned\n      vlan 100,200,210,300\n   !\n   address-family evpn\n      neighbor
+    \  !\n   vlan 100\n      rd 192.2.255.4:10100\n      route-target both 10100:10100\n
+    \     redistribute learned\n   !\n   vlan 110\n      rd 192.2.255.4:10110\n      route-target
+    both 10110:10110\n      redistribute learned\n   !\n   vlan 200\n      rd 192.2.255.4:10200\n
+    \     route-target both 10200:10200\n      redistribute learned\n   !\n   vlan
+    210\n      rd 192.2.255.4:10210\n      route-target both 10210:10210\n      redistribute
+    learned\n   !\n   vlan 300\n      rd 192.2.255.4:10300\n      route-target both
+    10300:10300\n      redistribute learned\n   !\n   address-family evpn\n      neighbor
     EVPN-OVERLAY-PEERS activate\n   !\n   address-family ipv4\n      no neighbor EVPN-OVERLAY-PEERS
     activate\n      neighbor IPv4-UNDERLAY-PEERS activate\n      neighbor MLAG-IPv4-UNDERLAY-PEER
     activate\n   !\n   vrf Tenant_A_OP_Zone\n      rd 192.2.255.4:10\n      route-target
@@ -1327,10 +1357,13 @@ cvp_configlets:
     remote-as 65002\n   neighbor 192.2.255.1 description s2-spine1\n   neighbor 192.2.255.2
     peer group EVPN-OVERLAY-PEERS\n   neighbor 192.2.255.2 remote-as 65002\n   neighbor
     192.2.255.2 description s2-spine2\n   redistribute connected route-map RM-CONN-2-BGP\n
-    \  !\n   vlan-aware-bundle Extend\n      rd 192.2.255.5:10110\n      route-target
-    both 10110:10110\n      redistribute learned\n      vlan 110\n   !\n   vlan-aware-bundle
-    Tenant_A_OP_Zone\n      rd 192.2.255.5:10\n      route-target both 10:10\n      redistribute
-    learned\n      vlan 100,200,210,300\n   !\n   address-family evpn\n      neighbor
+    \  !\n   vlan 100\n      rd 192.2.255.5:10100\n      route-target both 10100:10100\n
+    \     redistribute learned\n   !\n   vlan 110\n      rd 192.2.255.5:10110\n      route-target
+    both 10110:10110\n      redistribute learned\n   !\n   vlan 200\n      rd 192.2.255.5:10200\n
+    \     route-target both 10200:10200\n      redistribute learned\n   !\n   vlan
+    210\n      rd 192.2.255.5:10210\n      route-target both 10210:10210\n      redistribute
+    learned\n   !\n   vlan 300\n      rd 192.2.255.5:10300\n      route-target both
+    10300:10300\n      redistribute learned\n   !\n   address-family evpn\n      neighbor
     EVPN-OVERLAY-PEERS activate\n   !\n   address-family ipv4\n      no neighbor EVPN-OVERLAY-PEERS
     activate\n      neighbor IPv4-UNDERLAY-PEERS activate\n      neighbor MLAG-IPv4-UNDERLAY-PEER
     activate\n   !\n   vrf Tenant_A_OP_Zone\n      rd 192.2.255.5:10\n      route-target
@@ -1416,10 +1449,13 @@ cvp_configlets:
     remote-as 65002\n   neighbor 192.2.255.1 description s2-spine1\n   neighbor 192.2.255.2
     peer group EVPN-OVERLAY-PEERS\n   neighbor 192.2.255.2 remote-as 65002\n   neighbor
     192.2.255.2 description s2-spine2\n   redistribute connected route-map RM-CONN-2-BGP\n
-    \  !\n   vlan-aware-bundle Extend\n      rd 192.2.255.6:10110\n      route-target
-    both 10110:10110\n      redistribute learned\n      vlan 110\n   !\n   vlan-aware-bundle
-    Tenant_A_OP_Zone\n      rd 192.2.255.6:10\n      route-target both 10:10\n      redistribute
-    learned\n      vlan 100,200,210,300\n   !\n   address-family evpn\n      neighbor
+    \  !\n   vlan 100\n      rd 192.2.255.6:10100\n      route-target both 10100:10100\n
+    \     redistribute learned\n   !\n   vlan 110\n      rd 192.2.255.6:10110\n      route-target
+    both 10110:10110\n      redistribute learned\n   !\n   vlan 200\n      rd 192.2.255.6:10200\n
+    \     route-target both 10200:10200\n      redistribute learned\n   !\n   vlan
+    210\n      rd 192.2.255.6:10210\n      route-target both 10210:10210\n      redistribute
+    learned\n   !\n   vlan 300\n      rd 192.2.255.6:10300\n      route-target both
+    10300:10300\n      redistribute learned\n   !\n   address-family evpn\n      neighbor
     EVPN-OVERLAY-PEERS activate\n   !\n   address-family ipv4\n      no neighbor EVPN-OVERLAY-PEERS
     activate\n      neighbor IPv4-UNDERLAY-PEERS activate\n      neighbor MLAG-IPv4-UNDERLAY-PEER
     activate\n   !\n   vrf Tenant_A_OP_Zone\n      rd 192.2.255.6:10\n      route-target

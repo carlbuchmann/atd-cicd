@@ -100,16 +100,40 @@ router_bgp:
     neighbors:
     - ip_address: 10.255.251.9
       peer_group: MLAG-IPv4-UNDERLAY-PEER
-  vlan_aware_bundles:
-  - name: Tenant_A_OP_Zone
-    rd: 192.0.255.7:10
+  vlans:
+  - id: 100
+    tenant: Tenant_A
+    rd: 192.0.255.7:10100
     route_targets:
       both:
-      - '10:10'
+      - 10100:10100
     redistribute_routes:
     - learned
-    vlan: 100,200,210,300
-  - name: Extend
+  - id: 200
+    tenant: Tenant_A
+    rd: 192.0.255.7:10200
+    route_targets:
+      both:
+      - 10200:10200
+    redistribute_routes:
+    - learned
+  - id: 210
+    tenant: Tenant_A
+    rd: 192.0.255.7:10210
+    route_targets:
+      both:
+      - 10210:10210
+    redistribute_routes:
+    - learned
+  - id: 300
+    tenant: Tenant_A
+    rd: 192.0.255.7:10300
+    route_targets:
+      both:
+      - 10300:10300
+    redistribute_routes:
+    - learned
+  - id: 110
     tenant: Tenant_A
     rd: 192.0.255.7:10110
     route_targets:
@@ -117,7 +141,6 @@ router_bgp:
       - 10110:10110
     redistribute_routes:
     - learned
-    vlan: '110'
 static_routes:
 - vrf: default
   destination_address_prefix: 0.0.0.0/0

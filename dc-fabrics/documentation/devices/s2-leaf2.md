@@ -618,12 +618,15 @@ ip route 0.0.0.0/0 192.168.0.1
 | ---------- | -------- | ------------- |
 | EVPN-OVERLAY-PEERS | True | default |
 
-#### Router BGP VLAN Aware Bundles
+#### Router BGP VLANs
 
-| VLAN Aware Bundle | Route-Distinguisher | Both Route-Target | Import Route Target | Export Route-Target | Redistribute | VLANs |
-| ----------------- | ------------------- | ----------------- | ------------------- | ------------------- | ------------ | ----- |
-| Extend | 192.2.255.4:10110 | 10110:10110 | - | - | learned | 110 |
-| Tenant_A_OP_Zone | 192.2.255.4:10 | 10:10 | - | - | learned | 100,200,210,300 |
+| VLAN | Route-Distinguisher | Both Route-Target | Import Route Target | Export Route-Target | Redistribute |
+| ---- | ------------------- | ----------------- | ------------------- | ------------------- | ------------ |
+| 100 | 192.2.255.4:10100 | 10100:10100 | - | - | learned |
+| 110 | 192.2.255.4:10110 | 10110:10110 | - | - | learned |
+| 200 | 192.2.255.4:10200 | 10200:10200 | - | - | learned |
+| 210 | 192.2.255.4:10210 | 10210:10210 | - | - | learned |
+| 300 | 192.2.255.4:10300 | 10300:10300 | - | - | learned |
 
 #### Router BGP VRFs
 
@@ -680,17 +683,30 @@ router bgp 65201
    neighbor 192.2.255.2 description s2-spine2
    redistribute connected route-map RM-CONN-2-BGP
    !
-   vlan-aware-bundle Extend
+   vlan 100
+      rd 192.2.255.4:10100
+      route-target both 10100:10100
+      redistribute learned
+   !
+   vlan 110
       rd 192.2.255.4:10110
       route-target both 10110:10110
       redistribute learned
-      vlan 110
    !
-   vlan-aware-bundle Tenant_A_OP_Zone
-      rd 192.2.255.4:10
-      route-target both 10:10
+   vlan 200
+      rd 192.2.255.4:10200
+      route-target both 10200:10200
       redistribute learned
-      vlan 100,200,210,300
+   !
+   vlan 210
+      rd 192.2.255.4:10210
+      route-target both 10210:10210
+      redistribute learned
+   !
+   vlan 300
+      rd 192.2.255.4:10300
+      route-target both 10300:10300
+      redistribute learned
    !
    address-family evpn
       neighbor EVPN-OVERLAY-PEERS activate
