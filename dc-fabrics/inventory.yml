@@ -4,7 +4,7 @@ all:
     cv_servers:
       hosts:
         cv_atd1:
-          ansible_host: avd-demo-1-e5fb7f9f-eos.topo.testdrive-dev.arista.com
+          ansible_host: avd-demo-1-39bc7e2d-eos.topo.testdrive.arista.com
           cv_collection: v3
           execute_tasks: false
     DC_FABRICS:
@@ -93,7 +93,7 @@ all:
 
   vars:
     ansible_user: arista
-    ansible_password: aristanb0y
+    ansible_password: aristaem09
     ansible_network_os: arista.eos.eos
     # Configure privilege escalation
     ansible_become: true

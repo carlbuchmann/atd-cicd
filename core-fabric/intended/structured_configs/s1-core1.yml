@@ -1,3 +1,4 @@
+hostname: s1-core1
 router_bgp:
   as: '64555'
   router_id: 10.200.10.1
