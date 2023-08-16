@@ -99,12 +99,12 @@
 
 | Node | Node Interface | Node IP Address | Peer Node | Peer Interface | Peer IP Address |
 | ---- | -------------- | --------------- | --------- | -------------- | --------------- |
-| s1-brdr1 | Ethernet2 | 172.30.11.17/31 | s1-spine1 | Ethernet7 | 172.30.11.16/31 |
-| s1-brdr1 | Ethernet3 | 172.30.11.19/31 | s1-spine2 | Ethernet7 | 172.30.11.18/31 |
+| s1-brdr1 | Ethernet2 | 172.30.11.25/31 | s1-spine1 | Ethernet7 | 172.30.11.24/31 |
+| s1-brdr1 | Ethernet3 | 172.30.11.27/31 | s1-spine2 | Ethernet7 | 172.30.11.26/31 |
 | s1-brdr1 | Ethernet4 | 172.16.200.0/31 | s2-brdr1 | Ethernet4 | 172.16.200.1/31 |
 | s1-brdr1 | Ethernet5 | 172.16.200.2/31 | s2-brdr2 | Ethernet5 | 172.16.200.3/31 |
-| s1-brdr2 | Ethernet2 | 172.30.11.21/31 | s1-spine1 | Ethernet8 | 172.30.11.20/31 |
-| s1-brdr2 | Ethernet3 | 172.30.11.23/31 | s1-spine2 | Ethernet8 | 172.30.11.22/31 |
+| s1-brdr2 | Ethernet2 | 172.30.11.29/31 | s1-spine1 | Ethernet8 | 172.30.11.28/31 |
+| s1-brdr2 | Ethernet3 | 172.30.11.31/31 | s1-spine2 | Ethernet8 | 172.30.11.30/31 |
 | s1-brdr2 | Ethernet4 | 172.16.200.4/31 | s2-brdr2 | Ethernet4 | 172.16.200.5/31 |
 | s1-brdr2 | Ethernet5 | 172.16.200.6/31 | s2-brdr1 | Ethernet5 | 172.16.200.7/31 |
 | s1-leaf1 | Ethernet2 | 172.30.11.1/31 | s1-spine1 | Ethernet2 | 172.30.11.0/31 |
@@ -139,8 +139,8 @@
 
 | POD | Node | Loopback0 |
 | --- | ---- | --------- |
-| DC_FABRICS | s1-brdr1 | 192.0.255.7/32 |
-| DC_FABRICS | s1-brdr2 | 192.0.255.8/32 |
+| DC_FABRICS | s1-brdr1 | 192.0.255.9/32 |
+| DC_FABRICS | s1-brdr2 | 192.0.255.10/32 |
 | DC_FABRICS | s1-leaf1 | 192.0.255.3/32 |
 | DC_FABRICS | s1-leaf2 | 192.0.255.4/32 |
 | DC_FABRICS | s1-leaf3 | 192.0.255.5/32 |
@@ -167,8 +167,8 @@
 
 | POD | Node | Loopback1 |
 | --- | ---- | --------- |
-| DC_FABRICS | s1-brdr1 | 192.0.254.7/32 |
-| DC_FABRICS | s1-brdr2 | 192.0.254.7/32 |
+| DC_FABRICS | s1-brdr1 | 192.0.254.9/32 |
+| DC_FABRICS | s1-brdr2 | 192.0.254.9/32 |
 | DC_FABRICS | s1-leaf1 | 192.0.254.3/32 |
 | DC_FABRICS | s1-leaf2 | 192.0.254.3/32 |
 | DC_FABRICS | s1-leaf3 | 192.0.254.5/32 |

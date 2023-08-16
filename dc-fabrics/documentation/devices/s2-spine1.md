@@ -338,8 +338,8 @@ ip route 0.0.0.0/0 192.168.0.1
 | 192.0.255.4 | 65101 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - |
 | 192.0.255.5 | 65102 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - |
 | 192.0.255.6 | 65102 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - |
-| 192.0.255.7 | 65103 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - |
-| 192.0.255.8 | 65103 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - |
+| 192.0.255.9 | 65103 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - |
+| 192.0.255.10 | 65103 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - |
 | 192.2.255.3 | 65201 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - |
 | 192.2.255.4 | 65201 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - |
 | 192.2.255.5 | 65202 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - |
@@ -405,12 +405,12 @@ router bgp 65002
    neighbor 192.0.255.6 peer group EVPN-OVERLAY-PEERS
    neighbor 192.0.255.6 remote-as 65102
    neighbor 192.0.255.6 description s1-leaf4
-   neighbor 192.0.255.7 peer group EVPN-OVERLAY-PEERS
-   neighbor 192.0.255.7 remote-as 65103
-   neighbor 192.0.255.7 description s1-brdr1
-   neighbor 192.0.255.8 peer group EVPN-OVERLAY-PEERS
-   neighbor 192.0.255.8 remote-as 65103
-   neighbor 192.0.255.8 description s1-brdr2
+   neighbor 192.0.255.9 peer group EVPN-OVERLAY-PEERS
+   neighbor 192.0.255.9 remote-as 65103
+   neighbor 192.0.255.9 description s1-brdr1
+   neighbor 192.0.255.10 peer group EVPN-OVERLAY-PEERS
+   neighbor 192.0.255.10 remote-as 65103
+   neighbor 192.0.255.10 description s1-brdr2
    neighbor 192.2.255.3 peer group EVPN-OVERLAY-PEERS
    neighbor 192.2.255.3 remote-as 65201
    neighbor 192.2.255.3 description s2-leaf1

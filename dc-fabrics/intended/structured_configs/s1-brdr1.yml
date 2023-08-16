@@ -1,7 +1,7 @@
 hostname: s1-brdr1
 router_bgp:
   as: '65103'
-  router_id: 192.0.255.7
+  router_id: 192.0.255.9
   bgp:
     default:
       ipv4_unicast: false
@@ -40,14 +40,14 @@ router_bgp:
     - name: EVPN-OVERLAY-PEERS
       activate: false
   neighbors:
-  - ip_address: 10.255.251.9
+  - ip_address: 10.255.251.13
     peer_group: MLAG-IPv4-UNDERLAY-PEER
     description: s1-brdr2
-  - ip_address: 172.30.11.16
+  - ip_address: 172.30.11.24
     peer_group: IPv4-UNDERLAY-PEERS
     remote_as: '65001'
     description: s1-spine1_Ethernet7
-  - ip_address: 172.30.11.18
+  - ip_address: 172.30.11.26
     peer_group: IPv4-UNDERLAY-PEERS
     remote_as: '65001'
     description: s1-spine2_Ethernet7
@@ -84,8 +84,8 @@ router_bgp:
       activate: true
   vrfs:
   - name: Tenant_A_OP_Zone
-    router_id: 192.0.255.7
-    rd: 192.0.255.7:10
+    router_id: 192.0.255.9
+    rd: 192.0.255.9:10
     route_targets:
       import:
       - address_family: evpn
@@ -98,12 +98,12 @@ router_bgp:
     redistribute_routes:
     - source_protocol: connected
     neighbors:
-    - ip_address: 10.255.251.9
+    - ip_address: 10.255.251.13
       peer_group: MLAG-IPv4-UNDERLAY-PEER
   vlans:
   - id: 100
     tenant: Tenant_A
-    rd: 192.0.255.7:10100
+    rd: 192.0.255.9:10100
     route_targets:
       both:
       - 10100:10100
@@ -111,7 +111,7 @@ router_bgp:
     - learned
   - id: 200
     tenant: Tenant_A
-    rd: 192.0.255.7:10200
+    rd: 192.0.255.9:10200
     route_targets:
       both:
       - 10200:10200
@@ -119,7 +119,7 @@ router_bgp:
     - learned
   - id: 210
     tenant: Tenant_A
-    rd: 192.0.255.7:10210
+    rd: 192.0.255.9:10210
     route_targets:
       both:
       - 10210:10210
@@ -127,7 +127,7 @@ router_bgp:
     - learned
   - id: 300
     tenant: Tenant_A
-    rd: 192.0.255.7:10300
+    rd: 192.0.255.9:10300
     route_targets:
       both:
       - 10300:10300
@@ -135,7 +135,7 @@ router_bgp:
     - learned
   - id: 110
     tenant: Tenant_A
-    rd: 192.0.255.7:10110
+    rd: 192.0.255.9:10110
     route_targets:
       both:
       - 10110:10110
@@ -217,11 +217,11 @@ vlan_interfaces:
   description: MLAG_PEER_L3_PEERING
   shutdown: false
   mtu: 9214
-  ip_address: 10.255.251.8/31
+  ip_address: 10.255.251.12/31
 - name: Vlan4094
   description: MLAG_PEER
   shutdown: false
-  ip_address: 10.255.252.8/31
+  ip_address: 10.255.252.12/31
   no_autostate: true
   mtu: 9214
 - name: Vlan100
@@ -263,7 +263,7 @@ vlan_interfaces:
   description: 'MLAG_PEER_L3_iBGP: vrf Tenant_A_OP_Zone'
   vrf: Tenant_A_OP_Zone
   mtu: 9214
-  ip_address: 10.255.251.8/31
+  ip_address: 10.255.251.12/31
 port_channel_interfaces:
 - name: Port-Channel1
   description: MLAG_PEER_s1-brdr2_Po1
@@ -302,7 +302,7 @@ ethernet_interfaces:
   shutdown: false
   mtu: 9214
   type: routed
-  ip_address: 172.30.11.17/31
+  ip_address: 172.30.11.25/31
 - name: Ethernet3
   peer: s1-spine2
   peer_interface: Ethernet7
@@ -311,7 +311,7 @@ ethernet_interfaces:
   shutdown: false
   mtu: 9214
   type: routed
-  ip_address: 172.30.11.19/31
+  ip_address: 172.30.11.27/31
 - name: Ethernet4
   peer: s2-brdr1
   peer_interface: Ethernet4
@@ -333,7 +333,7 @@ ethernet_interfaces:
 mlag_configuration:
   domain_id: BORDER-DC1
   local_interface: Vlan4094
-  peer_address: 10.255.252.9
+  peer_address: 10.255.252.13
   peer_link: Port-Channel1
   reload_delay_mlag: '300'
   reload_delay_non_mlag: '330'
@@ -355,16 +355,16 @@ loopback_interfaces:
 - name: Loopback0
   description: EVPN_Overlay_Peering
   shutdown: false
-  ip_address: 192.0.255.7/32
+  ip_address: 192.0.255.9/32
 - name: Loopback1
   description: VTEP_VXLAN_Tunnel_Source
   shutdown: false
-  ip_address: 192.0.254.7/32
+  ip_address: 192.0.254.9/32
 - name: Loopback100
   description: Tenant_A_OP_Zone_VTEP_DIAGNOSTICS
   shutdown: false
   vrf: Tenant_A_OP_Zone
-  ip_address: 10.255.1.7/32
+  ip_address: 10.255.1.9/32
 prefix_lists:
 - name: PL-LOOPBACKS-EVPN-OVERLAY
   sequence_numbers:
@@ -403,7 +403,7 @@ vxlan_interface:
         vni: 10
 virtual_source_nat_vrfs:
 - name: Tenant_A_OP_Zone
-  ip_address: 10.255.1.7
+  ip_address: 10.255.1.9
 eos_cli: 'platform tfa personality arfa
 
   '

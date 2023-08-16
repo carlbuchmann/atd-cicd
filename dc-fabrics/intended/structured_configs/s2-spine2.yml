@@ -57,11 +57,11 @@ router_bgp:
     peer_group: IPv4-UNDERLAY-PEERS
     remote_as: '65203'
     description: s2-brdr2_Ethernet3
-  - ip_address: 192.0.255.7
+  - ip_address: 192.0.255.9
     peer_group: EVPN-OVERLAY-PEERS
     description: s1-brdr1
     remote_as: '65103'
-  - ip_address: 192.0.255.8
+  - ip_address: 192.0.255.10
     peer_group: EVPN-OVERLAY-PEERS
     description: s1-brdr2
     remote_as: '65103'

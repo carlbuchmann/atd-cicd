@@ -162,8 +162,8 @@ vlan internal order ascending range 1006 1199
 | Ethernet3 | P2P_LINK_TO_S1-LEAF2_Ethernet2 | routed | - | 172.30.11.4/31 | default | 9214 | False | - | - |
 | Ethernet4 | P2P_LINK_TO_S1-LEAF3_Ethernet2 | routed | - | 172.30.11.8/31 | default | 9214 | False | - | - |
 | Ethernet5 | P2P_LINK_TO_S1-LEAF4_Ethernet2 | routed | - | 172.30.11.12/31 | default | 9214 | False | - | - |
-| Ethernet7 | P2P_LINK_TO_S1-BRDR1_Ethernet2 | routed | - | 172.30.11.16/31 | default | 9214 | False | - | - |
-| Ethernet8 | P2P_LINK_TO_S1-BRDR2_Ethernet2 | routed | - | 172.30.11.20/31 | default | 9214 | False | - | - |
+| Ethernet7 | P2P_LINK_TO_S1-BRDR1_Ethernet2 | routed | - | 172.30.11.24/31 | default | 9214 | False | - | - |
+| Ethernet8 | P2P_LINK_TO_S1-BRDR2_Ethernet2 | routed | - | 172.30.11.28/31 | default | 9214 | False | - | - |
 
 #### Ethernet Interfaces Device Configuration
 
@@ -202,14 +202,14 @@ interface Ethernet7
    no shutdown
    mtu 9214
    no switchport
-   ip address 172.30.11.16/31
+   ip address 172.30.11.24/31
 !
 interface Ethernet8
    description P2P_LINK_TO_S1-BRDR2_Ethernet2
    no shutdown
    mtu 9214
    no switchport
-   ip address 172.30.11.20/31
+   ip address 172.30.11.28/31
 ```
 
 ### Loopback Interfaces
@@ -332,14 +332,14 @@ ip route 0.0.0.0/0 192.168.0.1
 | 172.30.11.5 | 65101 | default | - | Inherited from peer group IPv4-UNDERLAY-PEERS | Inherited from peer group IPv4-UNDERLAY-PEERS | - | - | - | - | - |
 | 172.30.11.9 | 65102 | default | - | Inherited from peer group IPv4-UNDERLAY-PEERS | Inherited from peer group IPv4-UNDERLAY-PEERS | - | - | - | - | - |
 | 172.30.11.13 | 65102 | default | - | Inherited from peer group IPv4-UNDERLAY-PEERS | Inherited from peer group IPv4-UNDERLAY-PEERS | - | - | - | - | - |
-| 172.30.11.17 | 65103 | default | - | Inherited from peer group IPv4-UNDERLAY-PEERS | Inherited from peer group IPv4-UNDERLAY-PEERS | - | - | - | - | - |
-| 172.30.11.21 | 65103 | default | - | Inherited from peer group IPv4-UNDERLAY-PEERS | Inherited from peer group IPv4-UNDERLAY-PEERS | - | - | - | - | - |
+| 172.30.11.25 | 65103 | default | - | Inherited from peer group IPv4-UNDERLAY-PEERS | Inherited from peer group IPv4-UNDERLAY-PEERS | - | - | - | - | - |
+| 172.30.11.29 | 65103 | default | - | Inherited from peer group IPv4-UNDERLAY-PEERS | Inherited from peer group IPv4-UNDERLAY-PEERS | - | - | - | - | - |
 | 192.0.255.3 | 65101 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - |
 | 192.0.255.4 | 65101 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - |
 | 192.0.255.5 | 65102 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - |
 | 192.0.255.6 | 65102 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - |
-| 192.0.255.7 | 65103 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - |
-| 192.0.255.8 | 65103 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - |
+| 192.0.255.9 | 65103 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - |
+| 192.0.255.10 | 65103 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - |
 | 192.2.255.3 | 65201 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - |
 | 192.2.255.4 | 65201 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - |
 | 192.2.255.5 | 65202 | default | - | Inherited from peer group EVPN-OVERLAY-PEERS | Inherited from peer group EVPN-OVERLAY-PEERS | - | Inherited from peer group EVPN-OVERLAY-PEERS | - | - | - |
@@ -387,12 +387,12 @@ router bgp 65001
    neighbor 172.30.11.13 peer group IPv4-UNDERLAY-PEERS
    neighbor 172.30.11.13 remote-as 65102
    neighbor 172.30.11.13 description s1-leaf4_Ethernet2
-   neighbor 172.30.11.17 peer group IPv4-UNDERLAY-PEERS
-   neighbor 172.30.11.17 remote-as 65103
-   neighbor 172.30.11.17 description s1-brdr1_Ethernet2
-   neighbor 172.30.11.21 peer group IPv4-UNDERLAY-PEERS
-   neighbor 172.30.11.21 remote-as 65103
-   neighbor 172.30.11.21 description s1-brdr2_Ethernet2
+   neighbor 172.30.11.25 peer group IPv4-UNDERLAY-PEERS
+   neighbor 172.30.11.25 remote-as 65103
+   neighbor 172.30.11.25 description s1-brdr1_Ethernet2
+   neighbor 172.30.11.29 peer group IPv4-UNDERLAY-PEERS
+   neighbor 172.30.11.29 remote-as 65103
+   neighbor 172.30.11.29 description s1-brdr2_Ethernet2
    neighbor 192.0.255.3 peer group EVPN-OVERLAY-PEERS
    neighbor 192.0.255.3 remote-as 65101
    neighbor 192.0.255.3 description s1-leaf1
@@ -405,12 +405,12 @@ router bgp 65001
    neighbor 192.0.255.6 peer group EVPN-OVERLAY-PEERS
    neighbor 192.0.255.6 remote-as 65102
    neighbor 192.0.255.6 description s1-leaf4
-   neighbor 192.0.255.7 peer group EVPN-OVERLAY-PEERS
-   neighbor 192.0.255.7 remote-as 65103
-   neighbor 192.0.255.7 description s1-brdr1
-   neighbor 192.0.255.8 peer group EVPN-OVERLAY-PEERS
-   neighbor 192.0.255.8 remote-as 65103
-   neighbor 192.0.255.8 description s1-brdr2
+   neighbor 192.0.255.9 peer group EVPN-OVERLAY-PEERS
+   neighbor 192.0.255.9 remote-as 65103
+   neighbor 192.0.255.9 description s1-brdr1
+   neighbor 192.0.255.10 peer group EVPN-OVERLAY-PEERS
+   neighbor 192.0.255.10 remote-as 65103
+   neighbor 192.0.255.10 description s1-brdr2
    neighbor 192.2.255.3 peer group EVPN-OVERLAY-PEERS
    neighbor 192.2.255.3 remote-as 65201
    neighbor 192.2.255.3 description s2-leaf1
